@@ -4,11 +4,10 @@ A high-performance, interactive reaction benchmarking tool built with vanilla Ja
 
 🚀 Live Demo
 
-🚀 Live Demo
-
 [https://christiancolon2.github.io/reaction-game/](https://christiancolon2.github.io/reaction-game/)
 
 📸 Screenshots
+
 ![Game Preview](screenshots/main-menu.png)
 
 [View screenshots](./screenshots/)
