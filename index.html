@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REACTION.IO // Professional Reaction Timer</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="reaction-game-favicon.png" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,48 +101,6 @@
         color: var(--accent-color);
       }
 
-      /* Bottom Left Statistics Box */
-      #bottom-stats-display {
-        position: fixed;
-        bottom: 2rem;
-        left: 2rem;
-        z-index: 100;
-        background: rgba(28, 28, 36, 0.8);
-        backdrop-filter: blur(12px);
-        padding: 1.5rem;
-        border-radius: 20px;
-        border: 1px solid var(--border-color);
-        width: 240px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      #bottom-stats-display h3 {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 0.5rem;
-      }
-
-      .stat-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-      }
-
-      .stat-row span:first-child {
-        color: var(--text-secondary);
-      }
-
-      .stat-row span:last-child {
-        font-family: var(--font-mono);
-        color: var(--accent-color);
-        font-weight: 600;
-      }
-
       #ui-layer {
         position: relative;
         z-index: 10;
@@ -229,11 +190,18 @@
         font-weight: 600;
       }
 
+      .trigger-sub-text {
+        font-size: 0.6rem;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        margin-top: 0.5rem;
+      }
+
       /* Modal Containers */
       .modal {
         pointer-events: auto;
         width: 90%;
-        max-width: 440px;
+        max-width: 480px;
         background: rgba(28, 28, 36, 0.95);
         backdrop-filter: blur(20px);
         border: 1px solid var(--border-color);
@@ -271,26 +239,103 @@
       }
       .sub-text {
         color: var(--text-secondary);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         line-height: 1.5;
+        font-size: 0.9rem;
       }
 
       .instruction-list {
         list-style: none;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         text-align: left;
       }
       .instruction-list li {
         position: relative;
         padding-left: 1.5rem;
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
       }
       .instruction-list li::before {
         content: "→";
         position: absolute;
         left: 0;
         color: var(--accent-color);
+      }
+
+      /* Legend Style */
+      .score-legend {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        border: 1px solid var(--border-color);
+      }
+
+      .legend-title {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-secondary);
+        margin-bottom: 0.8rem;
+        display: block;
+      }
+
+      .legend-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem 1.5rem;
+      }
+
+      .legend-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+      }
+
+      .legend-label {
+        font-weight: 600;
+      }
+      .legend-value {
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+      }
+
+      /* Session Statistics inside Modal */
+      .modal-stats-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+      }
+
+      .modal-stats-box h3 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-secondary);
+        margin-bottom: 0.8rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.4rem;
+      }
+
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+      }
+
+      .stat-row span:first-child {
+        color: var(--text-secondary);
+      }
+      .stat-row span:last-child {
+        font-family: var(--font-mono);
+        color: var(--accent-color);
+        font-weight: 600;
       }
 
       .btn-group {
@@ -304,7 +349,7 @@
         color: #000;
         border: none;
         padding: 1.2rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 800;
         border-radius: 16px;
         cursor: pointer;
@@ -319,39 +364,18 @@
         box-shadow: 0 10px 20px rgba(0, 245, 160, 0.2);
       }
 
-      .btn-no {
+      .btn-no,
+      .btn-secondary {
         background: transparent;
         border: 1px solid var(--border-color);
         color: var(--text-primary);
       }
 
-      .btn-no:hover {
+      .btn-no:hover,
+      .btn-secondary:hover {
         background: rgba(255, 77, 109, 0.1);
         border-color: var(--error-color);
         color: var(--error-color);
-      }
-
-      .stats-summary {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border-color);
-      }
-
-      .summary-item {
-        text-align: center;
-      }
-      .summary-label {
-        font-size: 0.6rem;
-        text-transform: uppercase;
-        color: var(--text-secondary);
-        display: block;
-      }
-      .summary-value {
-        font-family: var(--font-mono);
-        font-weight: 700;
-        color: var(--text-primary);
       }
 
       .rating-tag {
@@ -391,17 +415,18 @@
           right: 1rem;
           padding: 0.8rem 1rem;
         }
-        #bottom-stats-display {
-          bottom: 1rem;
-          left: 1rem;
-          width: calc(100% - 2rem);
-        }
         .score-value {
           font-size: 1.2rem;
         }
         #trigger-box {
           width: 220px;
           height: 220px;
+        }
+        .legend-grid {
+          grid-template-columns: 1fr;
+        }
+        .btn-group {
+          flex-direction: column;
         }
       }
     </style>
@@ -416,55 +441,81 @@
       <div id="top-rating-container"></div>
     </div>
 
-    <!-- Bottom Left Persistent Session Statistics -->
-    <div id="bottom-stats-display">
-      <h3>Session Statistics</h3>
-      <div class="stat-row">
-        <span>Attempts:</span>
-        <span id="btm-stat-trials">0</span>
-      </div>
-      <div class="stat-row">
-        <span>Best Time:</span>
-        <span id="btm-stat-best">--</span>
-      </div>
-      <div class="stat-row">
-        <span>Average:</span>
-        <span id="btm-stat-avg">--</span>
-      </div>
-    </div>
-
     <div id="ui-layer">
       <!-- Center Interaction Box -->
       <div id="trigger-box" onclick="game.handleTriggerClick()">
-        <span class="trigger-text" id="trigger-label">Click to Start</span>
+        <span class="trigger-text" id="trigger-label">Initialize</span>
+        <span class="trigger-sub-text">[SPACEBAR]</span>
       </div>
 
-      <!-- Instruction Modal -->
+      <!-- Main Menu / Instruction Modal -->
       <div id="screen-start" class="modal screen active">
         <h1>Reaction.io</h1>
-        <p class="sub-text">A professional reflex benchmark.</p>
+        <p class="sub-text">
+          Measure your processing speed with millisecond precision.
+        </p>
 
         <ul class="instruction-list">
-          <li>Watch the knot in the center</li>
-          <li>Wait for the box to pulse green</li>
-          <li>Click the box as fast as possible</li>
-          <li>Avoid clicking too early</li>
+          <li>Watch the knot; wait for the box to pulse green.</li>
+          <li>Click or press <b>Space</b> as fast as possible.</li>
         </ul>
 
-        <button class="btn" onclick="game.startRound()">Initialize</button>
+        <div class="score-legend">
+          <span class="legend-title">Performance Index</span>
+          <div class="legend-grid">
+            <div class="legend-item">
+              <span class="legend-label" style="color: #ffd700"
+                >Superhuman</span
+              >
+              <span class="legend-value">&lt; 200ms</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-label" style="color: var(--accent-color)"
+                >Excellent</span
+              >
+              <span class="legend-value">&lt; 280ms</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-label" style="color: #00b4d8">Good</span>
+              <span class="legend-value">&lt; 350ms</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-label" style="color: var(--text-secondary)"
+                >Average</span
+              >
+              <span class="legend-value">&lt; 450ms</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-label" style="color: var(--error-color)"
+                >Below Avg</span
+              >
+              <span class="legend-value">450ms+</span>
+            </div>
+          </div>
+        </div>
 
-        <div class="stats-summary">
-          <div class="summary-item">
-            <span class="summary-label">Best</span>
-            <span id="stat-best" class="summary-value">--</span>
+        <!-- Action Buttons -->
+        <div class="btn-group">
+          <button class="btn" onclick="game.startRound()">Start Session</button>
+          <button class="btn btn-secondary" onclick="game.resetAll()">
+            Reset Stats
+          </button>
+        </div>
+
+        <!-- Session Statistics Block -->
+        <div class="modal-stats-box">
+          <h3>Session Statistics</h3>
+          <div class="stat-row">
+            <span>Attempts:</span>
+            <span id="stat-trials">0</span>
           </div>
-          <div class="summary-item">
-            <span class="summary-label">Average</span>
-            <span id="stat-avg" class="summary-value">--</span>
+          <div class="stat-row">
+            <span>Best Time:</span>
+            <span id="stat-best">--</span>
           </div>
-          <div class="summary-item">
-            <span class="summary-label">Total</span>
-            <span id="stat-trials" class="summary-value">0</span>
+          <div class="stat-row">
+            <span>Average:</span>
+            <span id="stat-avg">--</span>
           </div>
         </div>
       </div>
@@ -475,7 +526,7 @@
         <div id="res-modal-rating"></div>
         <p class="sub-text" id="res-modal-text">Continue to the next trial?</p>
         <div class="btn-group">
-          <button class="btn" onclick="game.startRound()">Yes</button>
+          <button class="btn" onclick="game.startRound()">Yes [Space]</button>
           <button class="btn btn-no" onclick="game.goToMainMenu()">No</button>
         </div>
       </div>
@@ -484,10 +535,10 @@
       <div id="screen-error" class="modal screen">
         <h1 style="color: var(--error-color)">False Start</h1>
         <p class="sub-text">
-          You clicked too early. Patience is key to precision. Continue?
+          You triggered too early. Precision requires patience. Continue?
         </p>
         <div class="btn-group">
-          <button class="btn" onclick="game.startRound()">Yes</button>
+          <button class="btn" onclick="game.startRound()">Yes [Space]</button>
           <button class="btn btn-no" onclick="game.goToMainMenu()">No</button>
         </div>
       </div>
@@ -620,7 +671,7 @@
 
       /**
        * GAME LOGIC
-       * Handles timing, stats, and navigation flow.
+       * Handles timing, stats, navigation, and keyboard input.
        */
       class Game {
         constructor() {
@@ -637,6 +688,7 @@
           this.times = [];
           this.best = Infinity;
 
+          this.initEventListeners();
           this.loadStats();
           this.updateStatsUI();
         }
@@ -667,6 +719,16 @@
           osc.stop(this.audioCtx.currentTime + dur);
         }
 
+        initEventListeners() {
+          // Spacebar Support
+          window.addEventListener("keydown", (e) => {
+            if (e.key === " ") {
+              e.preventDefault(); // Prevent scrolling
+              this.handleTriggerClick();
+            }
+          });
+        }
+
         handleTriggerClick() {
           if (this.gameState === "START" || this.gameState === "RESULT") {
             this.startRound();
@@ -686,7 +748,7 @@
           this.sceneManager.setState("WAITING");
 
           this.triggerBox.className = "waiting";
-          this.triggerLabel.innerText = "Wait...";
+          this.triggerLabel.innerText = "WAIT...";
 
           const delay = Math.floor(Math.random() * 3000) + 2000;
           this.timerId = setTimeout(() => this.triggerReady(), delay);
@@ -698,7 +760,7 @@
           this.sceneManager.setState("READY");
 
           this.triggerBox.className = "ready";
-          this.triggerLabel.innerText = "CLICK!";
+          this.triggerLabel.innerText = "REAKT!";
           this.playOsc(880, 0.15, "sine", 0.1);
 
           document.body.style.backgroundColor = "rgba(0, 245, 160, 0.1)";
@@ -730,7 +792,7 @@
         endRound(time) {
           this.gameState = "RESULT";
           this.triggerBox.className = "";
-          this.triggerLabel.innerText = "Complete";
+          this.triggerLabel.innerText = "READY";
           this.sceneManager.setState("IDLE");
 
           this.attempts++;
@@ -741,7 +803,6 @@
           this.updateStatsUI();
           this.showTopScore(time);
 
-          // Show Result Modal with Yes/No
           const rating = this.getRating(time);
           document.getElementById("res-modal-title").innerText = `${time}ms`;
           document.getElementById("res-modal-rating").innerHTML =
@@ -766,7 +827,7 @@
           if (ms < 280) return { label: "Excellent", class: "excellent" };
           if (ms < 350) return { label: "Good", class: "good" };
           if (ms < 450) return { label: "Average", class: "average" };
-          return { label: "Slow", class: "bad" };
+          return { label: "Below Average", class: "bad" };
         }
 
         showModal(id) {
@@ -801,15 +862,9 @@
               : "--";
           const avgStr = avg === "--" ? "--" : `${avg}ms`;
 
-          // Update Start Modal Stats
           document.getElementById("stat-best").innerText = bestStr;
           document.getElementById("stat-trials").innerText = this.attempts;
           document.getElementById("stat-avg").innerText = avgStr;
-
-          // Update Persistent Bottom Stats
-          document.getElementById("btm-stat-trials").innerText = this.attempts;
-          document.getElementById("btm-stat-best").innerText = bestStr;
-          document.getElementById("btm-stat-avg").innerText = avgStr;
         }
 
         saveStats() {
@@ -827,15 +882,32 @@
           const saved = localStorage.getItem("reaction_stats_v3");
           if (saved) {
             const data = JSON.parse(saved);
-            this.best = data.best;
-            this.times = data.times;
-            this.attempts = data.attempts;
+            this.best = data.best || Infinity;
+            this.times = data.times || [];
+            this.attempts = data.attempts || 0;
           }
         }
 
         resetAll() {
+          // Clear storage
           localStorage.removeItem("reaction_stats_v3");
-          location.reload();
+
+          // Clear in-memory stats
+          this.best = Infinity;
+          this.times = [];
+          this.attempts = 0;
+
+          // Audio feedback for confirmation
+          this.initAudio();
+          this.playOsc(220, 0.1, "sine", 0.05);
+
+          // Update UI immediately (No Page Reload)
+          this.updateStatsUI();
+
+          // Hide top score if visible
+          document
+            .getElementById("top-score-display")
+            .classList.remove("visible");
         }
       }
 
